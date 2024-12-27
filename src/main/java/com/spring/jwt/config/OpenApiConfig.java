@@ -18,7 +18,7 @@ public class OpenApiConfig {
             localServer.setDescription("Local Server");
 
             Server productionServer = new Server();
-            productionServer.setUrl("https://cffffftasting-production.up.railway.app/");
+            productionServer.setUrl("https://becar.up.railway.app/");
             productionServer.setDescription("Production Server");
 
             openApi.setServers(List.of(localServer, productionServer));

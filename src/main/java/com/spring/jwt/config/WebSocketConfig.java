@@ -13,26 +13,27 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.enableSimpleBroker("/topic");
-        registry.setApplicationDestinationPrefixes("/app");
-    }
-
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/Aucbidding")
-                .setAllowedOrigins("http://localhost:5173","http://localhost:63342", "https://cartechindia.com")
-                .withSockJS();
-    }
 
 
-    @Override
-    public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
-        registration.setMessageSizeLimit(8192); // default : 64 * 1024
-        registration.setSendTimeLimit(20 * 10000); // default : 10 * 10000
-        registration.setSendBufferSizeLimit(3 * 512 * 1024); // default : 512 * 1024
-    }
+        @Override
+        public void configureMessageBroker(MessageBrokerRegistry registry) {
+            registry.enableSimpleBroker("/topic");
+            registry.setApplicationDestinationPrefixes("/app");
+        }
+
+        @Override
+        public void registerStompEndpoints(StompEndpointRegistry registry) {
+            registry.addEndpoint("/Aucbidding")
+                    .setAllowedOrigins("http://localhost:5173", "http://localhost:63342", "https://caryanamindia.com", "https://www.caryanamindia.com")
+                    .withSockJS();
+        }
+
+        @Override
+        public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
+            registration.setMessageSizeLimit(8192); // default : 64 * 1024
+            registration.setSendTimeLimit(20 * 10000); // default : 10 * 10000
+            registration.setSendBufferSizeLimit(3 * 512 * 1024); // default : 512 * 1024
+        }
 
     @Bean
     public ServerEndpointExporter serverEndpointExporter() {
