@@ -289,6 +289,59 @@ public class CarRegisterImp implements ICarRegister {
         return listOfCarDto;
     }
 
+//    @Override
+//    public List<CarDto> searchByFilter(FilterDto filterDto, int pageNo, int pageSize) {
+//        Specification<Car> spec = (root, query, criteriaBuilder) -> {
+//            List<Predicate> predicates = new ArrayList<>();
+//
+//            if (filterDto.getMinPrice() != null) {
+//                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), filterDto.getMinPrice()));
+//            }
+//            if (filterDto.getMaxPrice() != null) {
+//                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("price"), filterDto.getMaxPrice()));
+//            }
+//
+//            if (filterDto.getArea() != null && !filterDto.getArea().isEmpty()) {
+//                predicates.add(criteriaBuilder.equal(root.get("area"), filterDto.getArea()));
+//            }
+//            if (filterDto.getYear() > 0) {
+//                predicates.add(criteriaBuilder.equal(root.get("year"), filterDto.getYear()));
+//            }
+//            if (filterDto.getBrand() != null && !filterDto.getBrand().isEmpty()) {
+//                predicates.add(criteriaBuilder.equal(root.get("brand"), filterDto.getBrand()));
+//            }
+//            if (filterDto.getModel() != null && !filterDto.getModel().isEmpty()) {
+//                predicates.add(criteriaBuilder.equal(root.get("model"), filterDto.getModel()));
+//            }
+//            if (filterDto.getTransmission() != null && !filterDto.getTransmission().isEmpty()) {
+//                predicates.add(criteriaBuilder.equal(root.get("transmission"), filterDto.getTransmission()));
+//            }
+//            if (filterDto.getFuelType() != null && !filterDto.getFuelType().isEmpty()) {
+//                predicates.add(criteriaBuilder.equal(root.get("fuelType"), filterDto.getFuelType()));
+//            }
+//
+//            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+//        };
+//
+//        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+//
+//        Page<Car> carPage = carRepo.findAll(spec, pageable);
+//        if (carPage.isEmpty()) {
+//            throw new PageNotFoundException("Page Not found");
+//        }
+//
+//        List<CarDto> listOfCarDto = carPage.getContent().stream()
+//                .map(car -> {
+//                    CarDto carDto = new CarDto(car);
+//                    carDto.setCarId(car.getId());
+//                    return carDto;
+//                })
+//                .collect(Collectors.toList());
+//
+//        return listOfCarDto;
+//    }
+
+
     @Override
     public CarDto findById(int carId) {
         Optional<Car> car = carRepo.findById(carId);
